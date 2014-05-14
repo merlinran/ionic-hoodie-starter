@@ -1,5 +1,5 @@
 {
-  "name": "Tmp",
+  "name": "ionic-hoodie",
   "version": "0.0.0",
   "dependencies": {
     "angular": "~1.2.16",
