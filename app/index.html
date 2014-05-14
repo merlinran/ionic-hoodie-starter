@@ -21,15 +21,30 @@
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Ionic Hoodie Starter</h1>
       </ion-header-bar>
-      <ion-content class="has-header">
+      <ion-content class="has-header" ng-controller="PetIndexCtrl">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" ng-model="newPetName" placeholder="New Pet Name">
+          </label>
+          <button class="button button-block button-positive"
+            ng-click="addPet()">Add Pet</button>
+        </div>
+        <ion-list>
+          <ion-item ng-repeat="pet in pets track by $index">
+            {{pet.name}}
+          <button class="button button-assertive"
+            ng-click="removePet($index)">Remove Pet</button>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ion-pane>
 
     <!-- build:js scripts/vendor.js -->
     <!-- <script src="vendor/someContribJs.js"></script> -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -37,10 +52,12 @@
     <script src="bower_components/ionic/release/js/ionic.js"></script>
     <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
     <!-- endbower -->
+    <script src="bower_components/hoodie/dist/hoodie.js"></script>
     <!-- endbuild -->
-    
+
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
     <!-- endbuild -->
 
     <!-- cordova script (this will be a 404 during development) -->
