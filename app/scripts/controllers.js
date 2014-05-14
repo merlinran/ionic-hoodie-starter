@@ -5,8 +5,16 @@ angular.module('ionic-hoodie')
   var hoodie = new Hoodie();
   hoodie.account.signUp('joe@example.com', 'secret');
   hoodie.account.signIn('joe@example.com', 'secret');
-  hoodie.store.findAll().done(function(pets) {
-    $scope.pets = pets;
+
+  function refresh() {
+    hoodie.store.findAll().done(function(pets) {
+      $scope.pets = pets;
+    });
+  }
+
+  hoodie.remote.on('change', function (eventName, changedObject) {
+    refresh();
+    $scope.$apply();
   });
 
   $scope.addPet = function() {
@@ -23,4 +31,6 @@ angular.module('ionic-hoodie')
       $scope.pets.splice(index, 1);
     });
   };
+
+  refresh();
 });
