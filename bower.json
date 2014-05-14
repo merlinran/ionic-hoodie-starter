@@ -1,0 +1,13 @@
+{
+  "name": "Tmp",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "ionic": "v1.0.0-beta.4"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.16",
+    "angular-scenario": "~1.2.16"
+  }
+}
+
