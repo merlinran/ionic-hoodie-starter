@@ -14,6 +14,9 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  // Start hoodie and delay grunting till it is ready.
+  grunt.loadNpmTasks('grunt-hoodie');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -26,6 +29,16 @@ module.exports = function (grunt) {
       images: 'images'
     },
 
+    hoodie: {
+      start: {
+        options: {
+          callback: function (stack) {
+            // For example, set the port of grunt-connect-proxy:
+            grunt.config.set('connect.proxies.0.port', stack.stack.www.port);
+          }
+        }
+      }
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
@@ -63,6 +76,15 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+        context: '/_api',
+        host: 'localhost',
+        port: false,
+        https: false,
+        changeOrigin: false
+      }
+      ],
       livereload: {
         options: {
           open: true,
@@ -118,7 +140,7 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-    
+
     autoprefixer: {
       options: {
         browsers: ['last 1 version']
@@ -128,7 +150,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '.tmp/<%= yeoman.styles %>/',
           src: '{,*/}*.css',
-          dest: '.tmp/<%= yeoman.styles %>/'
+            dest: '.tmp/<%= yeoman.styles %>/'
         }]
       }
     },
@@ -140,8 +162,8 @@ module.exports = function (grunt) {
         ignorePath: '<%= yeoman.app %>/'
       }
     },
-    
-    
+
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -242,7 +264,7 @@ module.exports = function (grunt) {
         dest: 'www/'
       }
     },
-    
+
     concurrent: {
       server: [
         'copy:styles',
@@ -420,6 +442,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'hoodie',
       'clean:server',
       'bower-install',
       'concurrent:server',
