@@ -3,6 +3,8 @@
 angular.module('ionic-hoodie')
 .controller('PetIndexCtrl', function($scope) {
   var hoodie = new Hoodie();
+  hoodie.account.signUp('joe@example.com', 'secret');
+  hoodie.account.signIn('joe@example.com', 'secret');
   hoodie.store.findAll().done(function(pets) {
     $scope.pets = pets;
   });
