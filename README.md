@@ -1,3 +1,32 @@
+# Ionic and Hoodie Starter Project
+
+### Installation
+
+Install Ionic following steps [here](http://ionicframework.com/getting-started/#first-step).
+
+Install Hoodie following steps [here](http://hood.ie/#installation).
+
+Up and running:
+
+    git clone https://github.com/merlinran/ionic-hoodie-starter.git
+    npm install
+    bower install
+    grunt serve
+
+Internally, it will start Hoodie CouchDB, map `/_api` to it's RESTful API, then launch web server with livereload.
+
+Submit issue or pull request to contribute.
+
+### Credits:
+
+*  [https://github.com/drewzboto/grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy)
+*  [https://github.com/ro-ka/grunt-hoodie](https://github.com/ro-ka/grunt-hoodie)
+
+Below is original README of Hoodie example.
+
+***
+
+
 # Creating a new Hoodie App
 
 ## Installation
