@@ -1,0 +1,29 @@
+{
+  "name": "hoodie-test",
+  "version": "1.0.17",
+  "type": "app",
+  "dependencies": {
+    "hoodie-server": "^0.9.24",
+    "hoodie-plugin-appconfig": "^0.1.0",
+    "hoodie-plugin-email": "^0.1.1",
+    "hoodie-plugin-users": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=0.10.22"
+  },
+  "subdomain": "hoodie-hoodie-test",
+  "domains": [
+    "admin.hoodie-hoodie-test.jit.su",
+    "couch.hoodie-hoodie-test.jit.su"
+  ],
+  "scripts": {
+    "start": "node node_modules/hoodie-server/bin/start"
+  },
+  "hoodie": {
+    "plugins": [
+      "hoodie-plugin-appconfig",
+      "hoodie-plugin-email",
+      "hoodie-plugin-users"
+    ]
+  }
+}
